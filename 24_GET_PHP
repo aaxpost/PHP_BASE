@@ -1,0 +1,189 @@
+<p>Блок 24. №1 Отправьте с помощью GET-запроса число. Выведите его на экран.</p>
+<meta charset="utf-8">
+<p>GET - /?num=12</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	echo $_GET['num'];
+?>
+
+<p>Блок 24. №2 Отправьте с помощью GET-запроса число. Выведите его на экран квадрат этого числа.</p>
+<meta charset="utf-8">
+<p>GET - /?num=2</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	echo $_GET['num']*$_GET['num'];
+?>
+
+<p>Блок 25. №3 Отправьте с помощью GET-запроса два числа. Выведите его на экран сумму этих чисел.</p>
+<meta charset="utf-8">
+<p>GET - /?num1=3&num2=2</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	echo $_GET['num1'] + $_GET['num2'];
+?>
+
+<p>Блок 25. №4 Пусть с помощью GET-запроса отправляется число. Оно может быть или 1, или 2. Сделайте так, чтобы если передано 1 - на экран вывелось слово 'привет', а если 2 - то слово 'пока'.</p>
+<meta charset="utf-8">
+<p>GET - /?num1=1</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	if ($_GET['num1'] == 1) echo 'привет';
+	if ($_GET['num1'] == 2) echo 'пока';
+?>
+
+<p>Блок 25. №5 Дан массив. Сделайте так, чтобы с помощью GET-запроса можно было вывести любой элемент этого массива.</p>
+<meta charset="utf-8">
+<p>GET - /?num1=1</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$arr = [1, 2, 3, 4, 5];
+	if(isset($arr[$_GET['num1']])) {
+	echo $arr[$_GET['num1']];
+	}
+	else {
+		echo 'Элемента с таким значением в массиве нет!';
+		}
+?>
+
+<p>Блок 25. №6 Сделайте 3 ссылки. Пусть первая передает число 1, вторая - число 2, третья - число 3. Сделайте так, чтобы по нажатию на ссылку на экран выводилось ее число.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	if(isset($_GET['num1'])) {
+	echo $_GET['num1'].'<br>';
+	}	
+?>
+
+<a href="del.php?num1=1">link 1</a>
+<a href="del.php?num1=2">link 2</a>
+<a href="del.php?num1=3">link 3</a>
+
+<p>Блок 25. №7 Сформируйте в цикле 10 ссылок. Пусть каждая ссылка передает свое число. Сделайте так, чтобы по нажатию на ссылку на экран выводилось ее число.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	if(isset($_GET['num1'])) {
+	echo $_GET['num1'].'<br>';
+	}
+	
+	for ($i = 1; $i <= 10; $i++) {
+		echo "<a href=\"del.php?num1=$i\"> link $i </a>";
+		}
+?>
+
+<p>Блок 25. №8 Модифицируйте предыдущую задачу так, чтобы каждая ссылка стояла в своем абзаце.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	if(isset($_GET['num1'])) {
+	echo $_GET['num1'].'<br>';
+	}
+	
+	for ($i = 1; $i <= 10; $i++) {
+		echo "<a href=\"del.php?num1=$i\"><p>link $i</p></a>";
+		}
+?>
+
+<p>Блок 25. №9 Модифицируйте предыдущую задачу так, чтобы каждая ссылка стояла в своем li в теге ul.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	if(isset($_GET['num1'])) {
+	echo $_GET['num1'].'<br>';
+	}
+	echo "<ul>";
+	for ($i = 1; $i <= 10; $i++) {
+		echo "<a href=\"del.php?num1=$i\"><li>link $i</li></a>";
+		}
+	echo "</ul>";
+?>
+
+<p>Блок 25. №10 Дан массив. Сделайте так, чтобы с помощью GET-запроса можно было вывести любой элемент этого массива. Для этого вручную сделайте ссылку для каждого элемента массива. Переходя любой ссылке мы должны увидеть на экране соответствующий элемент массива.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$arr = ['a','b','c','d','e'];
+	
+	if(isset($_GET['num1']) and isset($arr[$_GET['num1']])) {
+	echo $arr[$_GET['num1']].'<br>';
+	}
+	
+?>
+
+<a href="del.php?num1=0">link 0</a>
+<a href="del.php?num1=1">link 1</a>
+<a href="del.php?num1=2">link 2</a>
+<a href="del.php?num1=3">link 3</a>
+<a href="del.php?num1=4">link 4</a>
+
+<p>Блок 25. №11 Модифицируйте предыдущую задачу так, чтобы ссылки выводились с помощью цикла foreach автоматически в соответствии с количеством элементов в массиве.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$arr = ['a','b','c','d','e'];
+	
+	if(isset($_GET['num']) and isset($arr[$_GET['num']])) {
+	echo $arr[$_GET['num']].'<br>';
+	}
+	
+	foreach ($arr as $key => $elem) {
+		echo "<a href=\"del.php?num=$key\"> link $elem </a>";
+		}
+	
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
