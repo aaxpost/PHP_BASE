@@ -47,3 +47,34 @@
 	echo lowNum(1111111);
 	
 ?>
+
+<p>4.Дан многомерный массив произвольного уровня вложенности. Выведите всего его элементы на экран..</p>
+
+<?php
+	
+
+	$arr = [[1, 2, 3, 4, 5], [6, 7, 8]];
+	
+	
+	//echo $arr1[1][0].'<br>'.'Проверка вызова элементов';
+	
+	echoArr($arr, 0);
+
+	function echoArr($arr, $level)
+	{ 
+		if($level < count($arr)) {
+			echo array_shift($arr[$level]).'<br>';
+		
+			if(!empty($arr[$level])) {
+				echoArr($arr, $level);
+			}
+			else  {
+				$level2 = $level + 1;
+				echoArr($arr, $level2);
+			}
+		
+		}
+	}
+?>	
+
+
