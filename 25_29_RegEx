@@ -1,0 +1,1051 @@
+<p>Блок 26. №1 Дана строка 'ahb acb aeb aeeb adcb axeb'. Напишите регулярку, которая найдет строки ahb, acb, aeb по шаблону: буква 'a', любой символ, буква 'b'.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'ahb acb aeb aeeb adcb axeb';
+	echo preg_replace('#a.b#', '!', $str);
+	
+	//В задачнике
+	
+	echo preg_replace('#a.b#', '!', 'ahb acb aeb aeeb adcb axeb');
+?>
+
+<p>Блок 26. №2 Дана строка 'aba aca aea abba adca abea'. Напишите регулярку, которая найдет строки abba adca abea по шаблону: буква 'a', 2 любых символа, буква 'a'. </p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'aba aca aea abba adca abea';
+	echo preg_replace('#a..a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#a..a#', '!', 'aba aca aea abba adca abea');
+	
+?>
+
+<p>Блок 26. №3 Дана строка 'aba aca aea abba adca abea'. Напишите регулярку, которая найдет строки abba и abea, не захватив adca.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'aba aca aea abba adca abea';
+	echo preg_replace('#ab.a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#ab.a#', '!', 'aba aca aea abba adca abea');
+	
+?>
+
+<p>Блок 26. №4  Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aba, abba, abbba по шаблону: буква 'a', буква 'b' любое количество раз, буква 'a'.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'aa aba abba abbba abca abea';
+	echo preg_replace('#ab+a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#ab+a#', '!', 'aa aba abba abbba abca abea');
+	
+?>
+
+<p>Блок 26. №5  Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aa, aba, abba, abbba по шаблону: буква 'a', буква 'b' любое количество раз (в том числе ниодного раза), буква 'a'.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'aa aba abba abbba abca abea';
+	echo preg_replace('#ab*a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#ab*a#', '!', 'aa aba abba abbba abca abea');
+	
+?>
+
+<p>Блок 26. №6  Дана строка 'aa aba abba abbba abca abea'. Напишите регулярку, которая найдет строки aa, aba по шаблону: буква 'a', буква 'b' один раз или ниодного, буква 'a'.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'aa aba abba abbba abca abea';
+	echo preg_replace('#ab?a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#ab?a#', '!', 'aa aba abba abbba abca abea');
+	
+?>
+
+<p>Блок 26. №7  Дана строка 'ab abab abab abababab abea'. Напишите регулярку, которая найдет строки по шаблону: строка 'ab' повторяется 1 или более раз.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'ab abab abab abababab abea';
+	echo preg_replace('#(ab)+#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#(ab)+#', '!', 'ab abab abab abababab abea');
+	
+?>
+
+<p>Блок 26. №8  Дана строка 'a.a aba aea'. Напишите регулярку, которая найдет строку a.a, не захватив остальные.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'a.a aba aea';
+	echo preg_replace('#a\.a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#a\.a#', '!', 'a.a aba aea');
+?>
+
+<p>Блок 26. №9 Дана строка '2+3 223 2223'. Напишите регулярку, которая найдет строку 2+3, не захватив остальные.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = '2+3 223 2223';
+	echo preg_replace('#2\+3#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#2\+3#', '!', '2+3 223 2223');
+?>
+
+<p>Блок 26. №10 Дана строка '23 2+3 2++3 2+++3 345 567'. Напишите регулярку, которая найдет строки 2+3, 2++3, 2+++3, не захватив остальные (+ может быть любое количество).</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = '23 2+3 2++3 2+++3 345 567';
+	echo preg_replace('#2\++3#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#2\++3#', '!', '23 2+3 2++3 2+++3 345 567');
+?>
+
+<p>Блок 26. №11 Дана строка '23 2+3 2++3 2+++3 445 677'. Напишите регулярку, которая найдет строки 23, 2+3, 2++3, 2+++3, не захватив остальные.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = '23 2+3 2++3 2+++3 445 677';
+	echo preg_replace('#2\+*3#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#2\+*3#', '!', '23 2+3 2++3 2+++3 445 667');
+?>
+
+<p>Блок 26. №12  Дана строка '*+ *q+ *qq+ *qqq+ *qqq qqq+'. Напишите регулярку, которая найдет строки *q+, *qq+, *qqq+, не захватив остальные.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = '*+ *q+ *qq+ *qqq+ *qqq qqq+';
+	echo preg_replace('#\*q+\+#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#\*q+\+#', '!', '*+ *q+ *qq+ *qqq+ *qqq qqq+');
+?>
+
+<p>Блок 26. №13  Дана строка '*+ *q+ *qq+ *qqq+ *qqq qqq+'. Напишите регулярку, которая найдет строки *+, *q+, *qq+, *qqq+, не захватив остальные.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = '*+ *q+ *qq+ *qqq+ *qqq qqq+';
+	echo preg_replace('#\*q*\+#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#\*q*\+#', '!', '*+ *q+ *qq+ *qqq+ *qqq qqq+');
+?>
+
+<p>Блок 26. №14  Дана строка 'aba accca azzza wwwwa'. Напишите регулярку, которая найдет все строки по краям которых стоят буквы 'a', и заменит каждую из них на '!'. Между буквами a может быть любой символ (кроме a).</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	$str = 'aba accca azzza wwwwa aaaaa';
+	//Плохо работает...
+	echo preg_replace('#a.+?a#', '!', $str);
+	
+	//В задачнике
+	echo preg_replace('#a.+?a#', '!', 'aba accca azzza wwwwa');
+?>
+
+<p>Блок 27. №1  Дана строка 'aa aba abba abbba abbbba abbbbba'. Напишите регулярку, которая найдет строки abba, abbba, abbbba и только их.</p>
+<meta charset="utf-8">
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#ab{2,}a#', '!', 'aa aba abba abbba abbbba abbbbba');
+	//Решение в задачнике
+	echo preg_replace('#ab{2,4}a#', '!', 'aa aba abba abbba abbbba abbbbba');
+	//Понял, невнимательность!
+?>
+
+<p>Блок 27. №2  Дана строка 'aa aba abba abbba abbbba abbbbba'. Напишите регулярку, которая найдет строки вида aba, в которых 'b' встречается менее 3-х раз (включительно).</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#ab{1,3}a#', '!', 'aa aba abba abbba abbbba abbbbba');
+	//Решение в задачнике
+	echo preg_replace('#ab{0,3}a#', '!', 'aa aba abba abbba abbbba abbbbba');
+	//Жесть, я думал Вы напишите "или не встречается" )))
+
+?>
+
+<p>Блок 27. №3  Дана строка 'aa aba abba abbba abbbba abbbbba'. Напишите регулярку, которая найдет строки вида aba, в которых 'b' встречается более 4-х раз (включительно).</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#ab{4,}a#', '!', 'aa aba abba abbba abbbba abbbbba');
+	//Решение в задачнике
+	echo preg_replace('#ab{4,}a#', '!', 'aa aba abba abbba abbbba abbbbba');
+	//Наконец-то правильно!
+?>
+
+<p>Блок 27. №4  Дана строка 'a1a a2a a3a a4a a5a aba aca'. Напишите регулярку, которая найдет строки, в которых по краям стоят буквы 'a', а между ними одна цифра.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a\da#', '!', 'a1a a2a a3a a4a a5a aba aca');
+	//Решение в задачнике
+	echo preg_replace('#a\da#', '!', 'a1a a2a a3a a4a a5a aba aca');
+?>
+
+<p>Блок 27. №5 Дана строка 'a1a a22a a333a a4444a a55555a aba aca'. Напишите регулярку, которая найдет строки, в которых по краям стоят буквы 'a', а между ними любое количество цифр. </p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a\d+a#', '!', 'a1a a22a a333a a4444a a55555a aba aca');
+	//Решение в задачнике
+	echo preg_replace('#a\d+a#', '!', 'a1a a22a a333a a4444a a55555a aba aca');
+?>
+
+<p>Блок 27. №6 Дана строка 'aa a1a a22a a333a a4444a a55555a aba aca'. Напишите регулярку, которая найдет строки, в которых по краям стоят буквы 'a', а между ними любое количество цифр (в том числе и ноль цифр, то есть строка 'aa').</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a\d*a#', '!', 'aa a1a a22a a333a a4444a a55555a aba aca');
+	//Решение в задачнике
+	echo preg_replace('#a\d*a#', '!', 'aa a1a a22a a333a a4444a a55555a aba aca');
+?>
+
+<p>Блок 27. №7 Дана строка 'avb a1b a2b a3b a4b a5b abb acb'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не число.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a\Db#', '!', 'avb a1b a2b a3b a4b a5b abb acb');
+	//Решение в задачнике
+	echo preg_replace('#a\Db#', '!', 'avb a1b a2b a3b a4b a5b abb acb');
+?>
+
+<p>Блок 27. №8 Дана строка 'ave a#b a2b a$b a4b a5b a-b acb'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a' и 'b', а между ними - не буква и не цифра.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a\Wb#', '!', 'ave a#b a2b a$b a4b a5b a-b acb');
+	//Решение в задачнике
+	echo preg_replace('#a\Wb#', '!', 'ave a#b a2b a$b a4b a5b a-b acb');
+?>
+
+<p>Блок 27. №9 Дана строка 'ave a#a a2a a$a a4a a5a a-a aca'. Напишите регулярку, которая заменит все пробелы на '!'. </p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#\s#', '!', 'ave a#a a2a a$a a4a a5a a-a aca');
+	//Решение в задачнике
+	echo preg_replace('#\s#', '!' ,'ave a#a a2a a$a a4a a5a a-a aca');
+?>
+
+<p>Блок 27. №10 Дана строка 'aba aea aca aza axa'. Напишите регулярку, которая найдет строки aba, aea, axa, не затронув остальных.  </p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[bex]a#', '!', 'ave a#a a2a a$a a4a a5a a-a aca').'<br>';
+	//Решение в задачнике
+	echo preg_replace('#a[bex]a#', '!', 'aba aea aca aza axa');
+?>
+
+<p>Блок 27. №11 Дана строка 'aba aea aca aza axa a.a a+a a*a'. Напишите регулярку, которая найдет строки aba, a.a, a+a, a*a, не затронув остальных.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[b\.\+\*]a#', '!', 'aba aea aca aza axa a.a a+a a*a').'<br>';
+	//Решение в задачнике
+	echo preg_replace('#a[b.+*]a#', '!', 'aba aea aca aza axa a.a a+a a*a');
+	//Понял, спецсимволы не нужно экранировать.
+?>
+
+<p>Блок 27. №12 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - цифра от 3-х до 7-ми.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[3-7]a#', '!', 'aba aea aca aza axa a.a a+a a*a').'<br>';
+	//Решение в задачнике
+	echo preg_replace('#a[3-7]a#', '!', $str);
+?>
+
+<p>Блок 27. №13  Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - буква от a до g.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[a-g]a#', '!', $str).'<br>';
+	//Решение в задачнике
+	echo preg_replace('#a[a-g]a#', '!', $str);
+?>
+
+<p>Блок 27. №14 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - буква от a до f и от j до z.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[a-fj-z]a#', '!', $str).'<br>';
+	//Решение в задачнике
+	echo preg_replace('#a[a-fj-z]a#', '!', $str);
+?>
+
+<p>Блок 27. №15 Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - буква от a до f и от A до Z.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[a-fA-Z]a#', '!', $str).'<br>';
+	//Решение в задачнике
+	echo preg_replace('#a[a-fA-Z]a#', '!', $str);
+?>
+
+<p>Блок 27. №16 Дана строка 'aba aea aca aza axa a-a a#a'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - не 'e' и не 'x'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[^ex]a#', '!', 'aba aea aca aza axa a-a a#a');
+	//Решение в задачнике
+	echo preg_replace('#a[^ex]a#', 'aba aea aca aza axa a-a a#a', $str);
+?>
+
+<p>Блок 27. №17 Дана строка 'wйw wяw wёw wqw'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'w', а между ними - буква кириллицы.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#w[а-яА-ЯЁё]w#u', '!', 'wйw wяw wёw wqw');
+	//Решение в задачнике
+	echo preg_replace('#w[а-яА-ЯЁё]w#u', '!', 'wйw wяw wёw wqw');
+?>
+
+<p>Блок 27. №18 Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - маленькие латинские буквы, не затронув остальных.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#a[a-z]+a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa');
+	//Решение в задачнике
+	echo preg_replace('#a[a-z]+a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa');
+?>
+
+<p>Блок 27. №19 Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - маленькие и большие латинские буквы, не затронув остальных.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#a[a-zA-Z]+a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa');
+	//Решение в задачнике
+	echo preg_replace('#a[a-zA-Z]+a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa');
+?>
+
+<p>Блок 27. №20 Дана строка 'aAXa aeffa aGha aza ax23a a3sSa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - маленькие латинские буквы и цифры, не затронув остальных.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#a[a-z0-9]+a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa');
+	//Решение в задачнике
+	echo preg_replace('#a[a-z0-9]+a#', '!', 'aAXa aeffa aGha aza ax23a a3sSa');
+?>
+
+<p>Блок 27. №21 Дана строка 'ааа ббб ёёё ззз ййй ААА БББ ЁЁЁ ЗЗЗ ЙЙЙ'. Напишите регулярку, которая найдет все слова по шаблону: любая кириллическая буква любое количество раз. </p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#[а-яА-ЯЁё]+#', '!', 'ааа ббб ёёё ззз ййй ААА БББ ЁЁЁ ЗЗЗ ЙЙЙ');
+	//Решение в задачнике
+	echo preg_replace('#[а-яА-ЯЁё]+#', '!', 'ааа ббб ёёё ззз ййй ААА БББ ЁЁЁ ЗЗЗ ЙЙЙ');
+?>
+
+<p>Блок 27. №22  Дана строка 'aaa aaa aaa'. Напишите регулярку, которая заменит первое 'aaa' на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#aaa#', '!', 'aaa aaa aaa', 1);
+	//Решение в задачнике
+	echo preg_replace('#^aaa#', '!' ,'aaa aaa aaa');
+?>
+
+<p>Блок 27. №22  Дана строка 'aaa aaa aaa'. Напишите регулярку, которая заменит первое 'aaa' на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#aaa#', '!', 'aaa aaa aaa', 1);
+	//Решение в задачнике
+	//Я понял, нужно было по условию задачи сделать....
+	echo preg_replace('#^aaa#', '!' ,'aaa aaa aaa');
+?>
+
+<p>Блок 27. №23  Дана строка 'aaa aaa aaa'. Напишите регулярку, которая заменит последнее 'aaa' на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#aaa$#', '!', 'aaa aaa aaa', 1);
+	//Решение в задачнике
+	echo preg_replace('#aaa$#', '!' ,'aaa aaa aaa');
+?>
+
+<p>Блок 27. №24 Дана строка 'aeeea aeea aea axa axxa axxxa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - или буква 'e' любое количество раз или по краям стоят буквы 'a', а между ними - буква 'x' любое количество раз. </p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#a(e+|x+)a#', '!', 'aeeea aeea aea axa axxa axxxa');
+	//Решение в задачнике
+	echo preg_replace('#a(e+|x+)a#', '!', 'aeeea aeea aea axa axxa axxxa');
+?>
+
+<p>Блок 27. №25  Дана строка 'aeeea aeea aea axa axxa axxxa'. Напишите регулярку, которая найдет строки следующего вида: по краям стоят буквы 'a', а между ними - или буква 'e' два раза или буква 'x' любое количество раз.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#a(e{2}|x+)a#', '!', 'aeeea aeea aea axa axxa axxxa');
+	//Решение в задачнике
+	echo preg_replace('#a(ee|x+)a#', '!', 'aeeea aeea aea axa axxa axxxa');
+?>
+
+<p>Блок 27. №26 Дана строка 'xbx aca aea abba adca abea'. Напишите регулярку, которая вокруг каждого слова вставит '!' (получится '!xbx! !aca! !aea! !abba! !adca! !abea!').</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#\b#', '!', 'xbx aca aea abba adca abea');
+	//Решение в задачнике
+	echo preg_replace('#\b#', '!', 'xbx aca aea abba adca abea');
+?>
+
+<p>Блок 27. №27 Дана строка 'a\a abc'. Напишите регулярку, которая заменит строку 'a\a' на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#a\\\\a#', '!', 'a\a abc');
+	//Решение в задачнике
+	echo preg_replace('#a\\\\a#', '!', 'a\a abc');
+?>
+
+<p>Блок 27. №28 Дана строка 'a\a a\\a a\\\a'. Напишите регулярку, которая заменит строку 'a\\\a' на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	echo preg_replace('#a\\\\{2}a#', '!', 'a\a a\\a a\\\a');
+	//Решение в задачнике
+	//В решении больше на один слеш.
+	echo preg_replace('#a\\\\{3}a#', '!', 'a\a a\\a a\\\\\a');
+?>
+
+<p>Блок 27. №29 Дана строка 'bbb /aaa\ bbb /ccc\'. Напишите регулярку, которая найдет содержимое всех конструкций /...\ и заменит их на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#/\w+\\\\#', '!', 'bbb /aaa\\ bbb /ccc\\').'<br>';
+	echo preg_replace('#/[a-z]+\\\\#', '!', 'bbb /aaa\\ bbb /ccc\\');
+	//Решение в задачнике
+	echo preg_replace('#/[a-z]+\\\\#', '!', 'bbb /aaa\ bbb /ccc\\');
+?>
+
+<p>Блок 27. №30 Дана строка 'bbb <b> hello </b>, <b> world </b> eee'. Напишите регулярку, которая найдет содержимое тегов <b> и заменит их на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	ini_set('display errors', 1);
+	error_reporting(E_ALL);
+	
+	
+	echo preg_replace('#<b>.+?</b>#', '!', 'bbb <b> hello </b>, <b> world </b> eee').'<br>';
+	
+	//Решение в задачнике #<b>\s[a-z]+\s</b>#
+	echo preg_replace('#<b>(.+?)</b>#', '!', 'bbb <b> hello </b>, <b> world </b> eee');
+?>
+
+<p>Блок 28. №1 Дана строка 'aaa@bbb eee7@kkk'. Напишите регулярку, которая найдет строки по шаблону: любое количество букв и цифр, символ @, любое количество букв и цифр и поменяет местами то, что стоит до @ на то, что стоит после нее. Например, aaa@bbb должно превратиться в bbb@aaa.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#([a-z\d]+)@([a-z\d]+)#i', '$2@$1', 'aaa@bbb eee7@kkk');
+	//Решение в задачнике
+	echo preg_replace('#([a-z0-9]+)@([a-z0-9]+)#', '$2@$1', 'aaa@bbb eee7@kkk');
+?>
+
+<p>Блок 28. №2  Дана строка вида 'a1b2c3'. Напишите регулярку, которая найдет все цифры и удвоит их количество таким образом: 'a11b22c33' (то есть рядом с каждой цифрой напишет такую же).</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#([a-z])(\d)([a-z])(\d)([a-z])(\d)#i', '$1$2$2$3$4$4$5$6$6', 'a1b2c3');
+	//Решение в задачнике
+	//Мда... я нарешал....
+	echo preg_replace('#\d#', '$0$0', 'a1b2c3');
+?>
+
+<p>Блок 28. №3 Дана строка 'aae xxz 33a'. Найдите все места, где есть два одинаковых идущих подряд символа и замените их на '!'. </p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#([a-z0-9])\1#i', '!', 'aae xxz 33a');
+	//Решение в задачнике
+	echo preg_replace('#([a-z\d])\1#', '!', 'aae xxz 33a');
+?>
+
+<p>Блок 28. №4 Дана строка 'aaa bcd xxx efg'. Найдите строки, состоящие из одинаковых символов (это будет aaa xxx).</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#([a-z0-9])\1\1#i', '!', 'aaa bcd xxx efg');
+	//Решение в задачнике
+	//Понял, сказано строки из одинаковых элементов...
+	echo preg_replace('#([a-z])\1+#', '!', 'aaa bcd xxx efg');
+?>
+
+<p>Блок 28. №5 С помощью preg_match определите, что переданная строка является емэйлом. Примеры емэйлов для тестирования mymail@mail.ru, my.mail@mail.ru, my-mail@mail.ru, my_mail@mail.ru, mail@mail.com, mail@mail.by, mail@yandex.ru.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_match('#^[a-zA-Z_.-]+@[a-z_]+\.[a-z]{2,3}$#', 'mail@yandex.ru');
+	//Решение подогнал под решение в задачнике, я начал умничать, что _ нет в почте...
+?>
+
+<p>Блок 28. №6 Дана строка с текстом, в котором могут быть емейлы. С помощью preg_match_all найдите все емэйлы.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'С помощью preg_match определите, что переданная строка является емэйлом. Примеры емэйлов для тестирования mymail@mail.ru, my.mail@mail.ru, my-mail@mail.ru, my_mail@mail.ru, mail@mail.com, mail@mail.by, mail@yandex.ru.';
+	
+	echo preg_match_all('#[a-zA-Z_.-]+@[a-z_]+\.[a-z]{2,3}#u', $str, $mail);
+	var_dump($mail);
+	//Решение в задачнике
+	
+	$str = 'mymail@mail.ru, my.mail@mail.ru, my-mail@mail.ru';
+	preg_match_all('#[a-z0-9_.-]+@[a-z_.-]+\.[a-z]{2,}#', $str, $matches);
+	var_dump($matches);
+	
+?>
+
+<p>Блок 28. №7 С помощью preg_match определите, что переданная строка является доменом. Примеры доменов: site.ru, site.com, my-site123.com.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'my-site123.com';
+	
+	echo preg_match('#[0-9a-zA-Z_.-]+\.[a-z]{2,3}#u', $str);
+	//var_dump($domain);
+	//Решение в задачнике
+	echo preg_match('#^[a-z0-9-]+\.[a-z]{2,}$#', 'my-site.com');
+	
+?>
+
+<p>Блок 28. №8 С помощью preg_match определите, что переданная строка является доменом 3-го уровня. Примеры доменов: hello.site.ru, hello.site.com, hello.my-site.com.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'hello.my-site.com';
+	
+	echo preg_match('#^[0-9a-z.-]+\.[0-9a-z.-]+\.[a-z]{2,}$#u', $str);
+	//var_dump($domain);
+	//Решение в задачнике. Подогнал)) Пропустил большие буквы и оставил 2.3 символа
+	echo preg_match('#^[a-z0-9-]+\.[a-z0-9-]+\.[a-z]{2,}$#', 'hello.my-site.com');
+	
+?>
+
+<p>Блок 28. №9 С помощью preg_match определите, что переданная строка является доменом, название которого начинается с http. Примеры доменов: http://site.ru, http://site.com.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'https://site.ru';
+	
+	echo preg_match('#^http://[0-9a-z.-]+\.[a-z]{2,}$#', $str);
+	var_dump($str);
+	//Решение в задачнике
+	echo preg_match('#^http://[a-z0-9-]+\.[a-z]{2,}$#', 'http://site.com');
+	
+?>
+
+<p>Блок 28. №10 С помощью preg_match определите, что переданная строка является доменом вида http://site.ru. Протокол может быть как http, так и https.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'https://site.ru';
+	
+	echo preg_match('#^https{0,1}://[0-9a-z.-]+\.[a-z]{2,}$#', $str);
+	var_dump($str);
+	//Решение в задачнике. Понял, так короче, но мое тоже работает.
+	echo preg_match('#^https?://[a-z0-9-]+\.[a-z]{2,}$#', 'https://site.com');
+	
+?>
+
+<p>Блок 28. №11 С помощью preg_match определите, что переданная строка является доменом. Протокол может быть как http, так и https. Домен может быть со слешем в конце: http://site.ru, http://site.ru/, https://site.ru, https://site.ru/.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'http://site.ru';
+	
+	echo preg_match('#^https?://[0-9a-z.-]+\.[a-z]{2,}/?$#', $str);
+	var_dump($str);
+	//Решение в задачнике.
+	echo preg_match('#^https?://[a-z0-9-]+\.[a-z]{2,}/?$#', 'https://site.com/');
+		
+?>
+
+<p>Блок 28. №12 С помощью preg_match определите, что переданная строка начинается с http или с https</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'https://site.rudsafdasf';
+	
+	echo preg_match('#^https?.+$#', $str);
+	var_dump($str);
+	//Решение в задачнике.
+	echo preg_match('#^https?#', 'https://site.com/');
+		
+?>
+
+<p>Блок 28. №13 С помощью preg_match определите, что переданная строка заканчивается расширением txt, html или php</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = '1234.php';
+	
+	echo preg_match('#^.+\.(txt|html|php)$#', $str);
+	var_dump($str);
+	//Решение в задачнике.
+	echo preg_match('#\.(txt|html|php)$#', 'index.html');
+		
+?>
+
+<p>Блок 28. №14 С помощью preg_match определите, что переданная строка заканчивается расширением jpg или jpeg.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = '1234.jpeg';
+	
+	echo preg_match('#^.+\.(jpg|jpeg)$#', $str);
+	var_dump($str);
+	//Решение в задачнике. Мой вариант тоже рабочий.
+	echo preg_match('#\.jpe?g$#', 'maket.jpeg');
+		
+?>
+
+<p>Блок 28. №15 С помощью preg_match узнайте является ли строка числом, длиной до 12 цифр.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = '111111111111';
+	
+	echo preg_match('#^\d{1,12}$#', $str);
+	var_dump($str);
+	//Решение в задачнике.
+	echo preg_match('#^\d{1,12}$#', '012345678910');
+		
+?>
+
+<p>Блок 28. №16 Дана строка с буквами, пробелами и цифрами. Найдите сумму всех чисел из данной строки.</p>
+
+<meta charset="utf-8">
+
+<?php
+	$str = 'a 1 bcc 12 13 1edf';
+	
+	preg_match_all('#\d+#', $str, $arr);
+	echo array_sum($arr[0]).'<br>';
+	var_dump($arr);
+	
+	//Решение в задачнике.
+	preg_match_all('#\d#', 'asf5asg 2asg sahh3', $matches);
+	echo(array_sum($matches[0]));
+		
+?>
+
+<p>Блок 28. №17 С помощью preg_replace преобразуйте дату в формате '31-12-2014' в '2014.12.31'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	
+	echo preg_replace('#^(\d+)-(\d+)-(\d+)$#', '$1.$2.$3' , '31-12-2014');
+	
+	//Решение в задачнике. Пропустил последовательность и количество цифр не поставил. Понял.
+	//Что сделать, поспешил.
+	echo preg_replace('#(\d{2})\-(\d{2})\-(\d{4})#', '$3.$2.$1','31-12-2014');
+			
+?>
+
+<p>Блок 28. №18 С помощью preg_replace замените в строке домены вида http://site.ru, http://site.com на <a href="http://site.ru">site.ru</a>.</p>
+
+<meta charset="utf-8">
+
+<?php
+	
+	echo preg_replace('#http://([0-9a-z.-]+\.[a-z]{2,})#', '<a href="$0">$1</a>' , 'http://site.ru, http://site.com');
+	
+	//Решение в задачнике. Я сделал для одного домена, но исправил.
+	$str = 'http://site.ru, http://site.com, https://site.info';
+	echo preg_replace('#https?://([a-z0-9-]+\.[a-z]{2,})#', '<a href="$0">$1</a>', $str);
+			
+?>
+
+<p>Блок 29. №1 С помощью позитивного и негативного просмотра найдите все строки по шаблону буква b, затем 3 буквы a и поменяйте 3 буквы a на знак '!'. То есть из 'baaa' нужно сделать 'b!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#(?<=b)aaa#i', '!', 'zyy ayy baaa');
+	
+	//Решение в задачнике.
+	echo preg_replace('#(?<=b)aaa#', '!', 'baaa');
+?>
+
+<p>Блок 29. №2 С помощью позитивного и негативного просмотра найдите все строки по шаблону любая буква, но не b, затем 3 буквы a и поменяйте 3 буквы a на знак '!'. То есть из, к примеру, 'waaa' нужно сделать 'w!', а 'baaa' не поменяется.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#(?<!b)aaa#i', '!', 'zyy ayy baaa waaa');
+	
+	//Решение в задачнике.
+	echo preg_replace('#(?<!b)aaa#', '!', 'baaa, waaa');
+?>
+
+<p>Блок 29. №3 С помощью позитивного и негативного просмотра найдите все строки по шаблону 3 буквы a, затем буква b и поменяйте 3 буквы a на знак '!'. То есть из 'aaab' нужно сделать '!b'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#aaa(?=b)#i', '!', 'zyy ayy baaa aaab');
+	
+	//Решение в задачнике.
+	echo preg_replace('#aaa(?=b)#', '!', 'aaab');
+?>
+
+<p>Блок 29. №4 С помощью позитивного и негативного просмотра найдите все строки по шаблону 3 буквы a, затем любая буква, но не b и поменяйте 3 буквы a на знак '!'. То есть из, к примеру, 'aaaw' нужно сделать '!w', а 'aaab' не поменяется.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#(?<!b{1})aaa(?!b|\b)#i', '!', 'caaa aaac aaaw aaab').'<br>';
+	echo preg_replace('#aaa(?!b|\b)#i', '!', 'caaa aaac aaaw aaab').'<br>';
+	//Решение в задачнике.
+	echo preg_replace('#aaa(?!b)#', '!', 'caaa aaac aaaw aaab');
+?>
+
+<p>Блок 29. №5 Дана строка со звездочками 'aaa * bbb ** eee * **'. Замените на '!' только одиночные звездочки, но не двойные.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#\*(?!\*)#', '!', 'aaa * bbb ** eee * **').'<br>';
+	
+	
+	//Решение в задачнике. Вроде понял в чем ошибка.
+	echo preg_replace('#(?<!\*)\*(?!\*)#', '!', 'aaa * bbb ** eee * **');
+?>
+
+<p>Блок 29. №6 Дана строка со звездочками 'aaa * bbb ** eee *** kkk ****'. Замените на '!' только двойные звездочки, но не одиночные или тройные и более.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#(?<!\*)\*\*(?!\*)#', '!', 'aaa * bbb ** eee *** kkk ****');
+	
+	//Решение в задачнике.
+	echo preg_replace('#(?<!\*)\*{2}(?!\*)#', '!', 'aaa * bbb ** eee *** kkk ****');
+?>
+
+<p>Блок 29. №7 С помощью позитивного и негативного просмотра найдите две одинаковые идущие подряд буквы и первую поменяйте на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#([a-zA-Z])(?=\1)#', '!', 'aabbccdefffgh');
+	
+	//Решение в задачнике.
+	echo preg_replace('#([a-z])(?=\1)#', '!', 'aabbccdefffgh'); //!a!b!cde!!fgh
+?>
+
+<p>Блок 29. №8 С помощью позитивного и негативного просмотра найдите две одинаковые идущие подряд буквы и вторую поменяйте на '!'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace('#(?<=([a-z]))\1#', '!', 'aasdffs');
+	
+	//Решение в задачнике.
+	echo preg_replace('#(?<=([a-z]))\1#', '!', 'aabbccdefffgh'); //a!b!c!def!!g
+?>
+
+<p>Блок 29. №9 Дана строка с целыми числами. С помощью регулярки преобразуйте строку так, чтобы вместо этих чисел стояли их квадраты. </p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace_callback('#(\d+)#', 'square', 'a1b2c3');
+ 	function square($matches)
+	{
+		$result = pow($matches[0], 2); //$matches[0] - это найденное число
+		return $result;
+	}
+	
+	//Решение в задачнике. Ошибку понял.
+	function func($matches)
+	{
+		return $matches[0] * $matches[0];
+	}
+
+	echo preg_replace_callback('#\d#', 'func', '123456789');
+?>
+
+<p>Блок 29. №10 Дана строка с целыми числами. Найдите числа, стоящие в кавычках и увеличьте их в два раза. Пример: из строки 2aaa'3'bbb'4' сделаем строку 2aaa'6'bbb'8'.</p>
+
+<meta charset="utf-8">
+
+<?php
+	echo preg_replace_callback('#(?<=\')\d(?=\')#', 'func', '2aaa\'3\'bbb\'4\'');
+ 	function func($matches)
+	{
+		$result = $matches[0] * 2;
+		return $result;
+	}
+	
+	//Решение в задачнике.
+	echo preg_replace_callback("#'(\d+)'#", 'func', " 2aaa'3'bbb'4'");
+	
+?>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
