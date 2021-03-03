@@ -1,0 +1,261 @@
+#31.1
+echo file_get_contents('test.txt');
+
+#31.2
+file_put_contents('test.txt', '12345');
+
+#31.3
+file_put_contents('test.txt', '12345');
+
+#31.4
+file_put_contents('new.txt', '');
+
+#31.5
+$arr = ['1.txt', '2.txt', '3.txt'];
+foreach ($arr as $elem) {
+file_put_contents($elem, '');
+}
+
+#31.6
+$text = file_get_contents('test.txt');
+file_put_contents('test.txt', $text.'!');
+
+#31.7
+file_put_contents('test.txt', pow(file_get_contents('test.txt'), 2));
+
+#31.8
+file_put_contents('count.txt', file_get_contents('count.txt') + 1);
+
+#31.9
+$text = '';
+$arr = ['1.txt', '2.txt', '3.txt'];
+foreach ($arr as $elem) {
+$text .= file_get_contents($elem);
+}
+
+file_put_contents('new.txt', $text);
+
+#31.10
+$arr = ['1.txt', '2.txt', '3.txt'];
+foreach ($arr as $elem) {
+file_put_contents($elem, file_get_contents($elem).'!');
+}
+
+#31.11
+rename('old.txt','new.txt');
+
+#31.12
+rename('test.txt','dir/test.txt');
+
+#31.13
+rename('dir1/test.txt','dir2/test.txt');
+
+#31.14
+copy('test.txt','copy.txt');
+
+#31.15
+copy('test.txt','dir/test.txt');
+
+#31.16
+unlink('test.txt');
+
+#31.17
+$arr = ['1.txt', '2.txt', '3.txt'];
+foreach($arr as $elem){
+unlink($elem);
+}
+
+#31.18
+var_dump(file_exists('test.txt'));
+
+#31.19
+if (file_exists('test.txt') == true) {
+		unlink('test.txt');
+		}
+		else {
+			file_put_contents('test.txt', '');
+			}
+
+#31.20
+$arr = ['1.txt', '2.txt', '3.txt'];
+	foreach($arr as $elem) {
+	if (file_exists($elem) == true) {
+		echo $elem.'- существует'.'<br>';
+		}
+		else {
+			echo $elem.'- не существует'.'<br>';
+			}
+	}
+
+#31.21
+echo filesize('test.txt');
+
+#31.22
+echo filesize('test.txt') / 1024;
+
+#31.23
+echo filesize('juan.jpg') / (1024*1024);
+
+#31.24
+echo filesize('film.mp4') / (1024*1024*1024);
+
+#31.25
+$arr = explode(PHP_EOL, file_get_contents('test.txt'));
+
+#31.26
+file_put_contents('sum.txt', array_sum(explode(PHP_EOL, file_get_contents('test.txt'))));
+
+#31.27
+$arr = [1, 2, 3, 4, 5];
+file_put_contents('test.txt', implode(PHP_EOL, $arr));
+
+#31.28
+echo array_sum(file('test.txt', FILE_IGNORE_NEW_LINES));
+
+#31.29
+$text = file_get_contents('test.txt');
+file_put_contents('test.txt', $text. PHP_EOL . array_sum(file('test.txt', FILE_IGNORE_NEW_LINES)));
+
+#31.30
+mkdir('dir');
+
+#31.31
+$arrdir = ['dir1', 'dir2','dir2' ,'dir4' ,'dir5'];
+foreach($arrdir as $elem) {
+mkdir($elem);
+}
+
+#31.32
+
+$arrdir = ['test' => ['1.txt', '2.txt','3.txt']];
+foreach($arrdir as $key => $elem) {
+mkdir($key);
+foreach($elem as $elem1) {
+file_put_contents($key."/".$elem1, '');
+	}
+}
+
+#31.33
+rmdir('dir');
+
+#31.34
+rename('old', 'new');
+
+#31.35
+$arrf = array_diff(scandir('dir'), ['.','..']);
+foreach ($arrf as $elem) {
+echo $elem. "<br>";
+}
+
+#31.36
+$arrf = array_diff(scandir('dir'), ['.','..']);
+	foreach ($arrf as $elem) {
+		if (preg_match('#^.+\.txt$#', $elem) == true) {
+			$text = file_get_contents("dir"."/".$elem);
+			file_put_contents("dir"."/".$elem, $text. "!");
+			}
+		}
+		
+#31.37
+$arrf = array_diff(scandir('dir'), ['.','..']);
+	foreach ($arrf as $elem) {
+		if (preg_match('#^.+\.txt$#', $elem) == true) {
+			echo file_get_contents("dir"."/".$elem).'<br>';
+			}
+		}
+
+#31.38
+$way = 'dir/newdir/test.txt';
+	if (is_file($way) == true) {
+		echo "Это файл!";
+		}
+	if (is_dir($way) == true) {
+		echo "Это папка!";
+		}
+
+#31.39
+$arrf = array_diff(scandir('dir'), ['.','..']);
+	foreach ($arrf as $elem) {
+		if (is_dir("dir/".$elem) == true) {
+			echo $elem.'<br>';
+			}
+		}
+		
+#31.40
+$arrf = array_diff(scandir('dir'), ['.','..']);
+	foreach ($arrf as $elem) {
+		if (is_file("dir/".$elem) == true) {
+			echo $elem.'<br>';
+			}
+		}
+		
+#31.41
+$arr = (getFiles('dir'));
+	
+	function getFiles($dir) {
+		
+		$files = array_diff(scandir($dir), ['.','..']);
+		$result = [];
+		
+		foreach ($files as $file) {
+			$path = $dir."/". $file;
+			
+			if (is_dir($path)) {
+					$result = array_merge($result, getFiles($path));
+				}
+				else {
+					$result[] = $path;
+					}
+			}
+			return $result;
+		}
+		
+	foreach ($arr as $path) {
+		echo $path.'<br>';
+		}
+		
+#31.42
+function getFiles($dir) {
+		
+		$files = array_diff(scandir($dir), ['.','..']);
+		$result = [];
+		
+		foreach ($files as $file) {
+			$path = $dir."/". $file;
+			
+			if (is_dir($path)) {
+				
+					$result = array_merge($result, getFiles($path));
+				}
+				else {
+					$result[] = $path;
+					}
+			}
+			return $result;
+		}
+		
+	foreach (getFiles('dir') as $path) {
+		file_put_contents($path, file_get_contents($path) . '!');
+		}
+		
+#31.43
+removeDir('dir');
+	
+	function removeDir($dir) {
+		
+		$files = array_diff(scandir($dir), ['.','..']);
+		
+		foreach ($files as $file) {
+			$path = $dir."/". $file;
+			
+			if (is_dir($path)) {
+				removeDir($path);
+				}
+				else {
+					unlink($path);
+					}
+			}
+			rmdir($dir);
+		}
+
+
