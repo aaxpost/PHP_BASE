@@ -1,0 +1,173 @@
+#30.1
+Redirect /index.php /test.php
+
+#30.2
+Redirect /index1.php /1.php
+Redirect /index2.php /2.php
+Redirect /index3.php /3.php
+
+#30.3
+Redirect /index.php http://site.ru/
+
+#30.4
+RewriteRule ^dir/ index.php
+
+#30.5
+RewriteRule ^dir1/ index1.php
+RewriteRule ^dir2/ index2.php
+
+#30.6
+RewriteRule .+\.html$ index.php
+
+#30.7
+RewriteRule .+\.php$ index.php
+
+#30.8
+RewriteRule .+\.(php|html)$ index.php
+
+#30.9
+RewriteRule (.+)\.html$ $1.php
+
+#30.10
+RewriteRule (.+) http://site.com/$1
+
+#30.11
+RedirectMatch /index(\d)\.php /$1.php
+
+#30.12
+RedirectMatch /.*/?dir/.*$ /index.php
+
+#30.13
+RedirectMatch /.*dir.*$ /index.php
+
+#30.14
+RedirectMatch /.*dir$ /index.php
+
+#30.15
+RedirectMatch /test\d.php /index.php
+
+#30.16
+RedirectMatch /test[0-9]+\.php$ /index.php
+
+#30.17
+RedirectMatch /.*/?\d+/.*$ /index.php
+
+#30.18
+RewriteRule !test\.php index.php
+
+#30.19
+RewriteRule !.+\.html$ index.php
+
+#30.20
+RewriteRule !^webroot/.* index.php
+
+#30.21
+RewriteCond %{REQUEST_URI} \.html$
+RewriteRule .+ index.php
+
+#30.22
+RewriteCond %{REQUEST_URI} !\.html$
+RewriteRule .+ index.php
+
+#30.23
+RewriteCond %{REQUEST_URI} \.html$
+RewriteCond %{REQUEST_URI} ^/content/
+RewriteRule .+ index.php
+
+#30.24
+RewriteCond %{REQUEST_URI} \.html$ [OR]
+RewriteCond %{REQUEST_URI} \.php$
+RewriteRule .+ index.php
+
+#30.25
+RewriteCond %{REQUEST_URI} \.css$ [OR]
+RewriteCond %{REQUEST_URI} ^/styles/
+RewriteRule .+ index.php
+
+#30.26
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .+ index.php
+
+#30.27
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .+ index.php
+
+#30.28
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule .+ index.php
+
+#30.29
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .+ index.php
+
+#30.30
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} \.html$
+RewriteRule .+ index.php
+
+#30.31
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .+ index.php
+
+#30.32.1
+
+RewriteRule .+ index.php?get=1
+
+#Останавливаю редирект
+RewriteRule ^index\.php$ index.php?get=2 [L]
+
+RewriteRule ^index\.php$ index.php?get=3
+
+#30.32.2
+
+RewriteRule ^index\.php$ index.php?get=2
+
+#Остановка здесь, т.к. оно уже выполнилось
+RewriteRule .+ index.php?get=5
+
+#30.32.3
+
+#Первый раз прошли, второй - попали и стали!
+RewriteRule ^index\.php$ index.php?get=45 [L]
+
+RewriteRule .+ index.php?get=5
+
+#30.32.4
+
+#RewriteRule ^index\.php$ index.php?get=45 [L]
+
+RewriteCond %{REQUEST_URI} !/index\.php
+RewriteRule .+ index.php?get=5
+
+#30.32.5
+
+#RewriteCond %{REQUEST_URI} !/index\.php
+#Зациклим
+RewriteRule (.+) text/$1
+
+#30.32.6
+
+RewriteCond %{REQUEST_URI} !^/2021/
+RewriteRule (.+) 2021/$1
+
+#30.33
+
+RewriteCond %{REQUEST_URI} !^/index\.php$
+
+RewriteRule (.+) index.php?get=$1
+
+#30.34
+
+RewriteRule (.+) index.php?get=$1
+
+#30.35
+RewriteRule ^test\.php$ index.php [NC]
+
+#30.36
+ErrorDocument 404 /404.php
+
+
+
+
+
