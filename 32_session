@@ -1,0 +1,99 @@
+#32.1
+<?php
+	session_start();
+	if (!isset($_SESSION['test'])) {
+		$_SESSION['test'] = 'test';
+	} else {
+		echo $_SESSION['test'];
+	}	
+?>
+
+#32.2
+<?php
+	//file index.php
+	session_start();
+	//session_destroy();
+	if (!isset($_SESSION['test'])) {
+		$_SESSION['test'] = 'test';
+	}
+	
+<?php
+	//file test.php
+	session_start();
+	echo $_SESSION['test'];
+	
+#32.3
+<?php
+	session_start();
+	if (!isset($_SESSION['counter'])) {
+		$_SESSION['counter'] = 0;
+		echo 'Вы еще не обновляли эту страницу';
+	} else {
+		$_SESSION['counter'] = $_SESSION['counter'] + 1;
+		echo 'Количество обновлений: '.$_SESSION['counter'];
+	}
+	
+#32.4
+<?php
+	//file index.php
+	session_start();
+	
+	if (isset($_REQUEST['submit'])) {
+		$_SESSION['town'] = $_REQUEST['town'];
+		}	
+?>
+
+<form action="" method="GET">
+	<input name="town" placeholder = "Ваш город">
+	<input type="submit" name = "submit">
+</form>
+
+<?php
+	//file test.php
+	session_start();
+	echo 'Ваш город: ' . $_SESSION['town'];
+	
+#32.5
+<?php
+	session_start();
+	if (!isset($_SESSION['time'])) {
+		$_SESSION['time'] = time();
+		echo 'Первый заход на страницу';
+	} else {
+		$time = time() - $_SESSION['time'];
+		echo 'Вы зашли на сайт: '. $time . ' секунд назад.';
+	}
+	
+#32.6
+<?php
+	//file index.php
+	session_start();
+	//session_destroy();
+	
+	if (isset($_REQUEST['submit'])) {
+		$_SESSION['email'] = $_REQUEST['email'];
+		}	
+?>
+
+<form action="" method="GET">
+	<input name="email" placeholder = "email">
+	<input type="submit" name = "submit">
+</form>
+
+<?php
+	//file test.php
+	session_start();
+	//session_destroy();
+?>
+
+<form action="" method="GET">
+	<input name="name" placeholder = "имя">
+	<input name="surname" placeholder = "фамилия">
+	<input name="password" placeholder = "пароль">
+	<input name="email" placeholder = "email" value = "<?php if (isset($_SESSION['email'])) echo $_SESSION['email'];?>">
+	<input type="submit" name = "submit">
+</form>
+
+
+
+
