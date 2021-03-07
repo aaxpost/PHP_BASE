@@ -1,0 +1,74 @@
+#33.1
+<?php
+	setcookie('test', '123');
+	echo $_COOKIE['test'];	
+?>
+
+#33.2
+<?php
+	setcookie('test', '', time());	
+?>
+
+#33.3
+<?php
+	setcookie('test', $_COOKIE['test'] + 1, time() + 3600*24);
+	echo 'Вы посетили сайт '. $_COOKIE['test'] . ' раз.';	
+?>
+
+#33.4
+<?php
+	setcookie('count', $_COOKIE['count'] + 1, time() + 3600*24);
+	if (isset($_REQUEST['submit'])) {
+	setcookie('date', $_REQUEST['date'], time() + 3600*24);
+	}
+	//setcookie('count', '', time());
+	//setcookie('date', '', time());
+	
+
+	if ($_COOKIE['count'] < 2) {		
+?>
+		<form action="" method="GET">
+			<input name="date" placeholder = "день.месяц.год">
+			<input type="submit" name = "submit">
+		</form>
+<?php		 
+		}
+		else {
+			echo 'Количестсво заходов - ' . $_COOKIE['count'].'<br>';
+			echo 'Дата рождения: ' . $_COOKIE['date'].'<br>';
+			if (happyDay($_COOKIE['date']) != 0) {
+				echo 'До дня рождения осталось ' . happyDay($_COOKIE['date']) . ' дней.';
+				}
+				else {
+					echo 'С Днем рождения!';
+					}
+			}
+			
+	function happyDay($date) {
+	$hbarr = [];
+	$datehb = '';
+	$datebase = '';
+	$year = '';
+	
+	if (!empty($date)) {
+		
+			$hbarr = explode('.', $date);
+			
+			if ($hbarr[1] < date('m') or $hbarr[1] == date('m') and $hbarr[0] < date('d')) {
+
+				$datebase = (date('Y') + 1).'-'.$hbarr[1].'-'.$hbarr[0];  
+				}
+				else {
+					$datebase = date('Y').'-'.$hbarr[1].'-'.$hbarr[0];
+					}	
+		}
+		
+	if ($hbarr[0] == date('d') and $hbarr[1] == date('m')) {
+		return 0;
+		}
+		else {
+			return abs(floor(((strtotime($datebase) - time())/86400)));
+		}
+	}			
+?>
+
