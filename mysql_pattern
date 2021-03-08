@@ -1,0 +1,85 @@
+<?php
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'on');
+	
+	//Устанавливаем доступы к базе данных:
+	$host = 'localhost';
+	$user = 'root';
+	$password = '';
+	$db_name = 'test';
+
+	//Соединяемся с базой данных используя наши доступы:
+	$link = mysqli_connect($host, $user, $password, $db_name)
+		or die(mysqli_error($link));
+		
+	mysqli_query($link, "SET NAMES 'utf8'");
+	/*
+		Соединение записывается в переменную $link,
+		которая используется дальше для работы mysqi_query.
+		Этот код всегда переписываем.
+	*/
+	
+	
+	//Получить данные из таблицы. Формируем запрос
+	//$query = "SELECT*FROM workers WHERE salary=500";
+	//Отправляем запрос
+	//$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	
+	//var_dump ($result);
+	
+	/*
+	//Построчный доступ к базе данных
+	$user = mysqli_fetch_assoc($result);
+	var_dump ($user);	
+	
+	$user = mysqli_fetch_assoc($result);
+	var_dump ($user);
+	*/
+	
+	/*
+	$query = "INSERT INTO workers SET name='Петя', age=25, salary=500";
+	mysqli_query($link, $query) or die(mysqli_error($link));
+	*/
+		
+	//for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row );
+	//var_dump ($data);
+	
+	//print '<pre>';
+	//print_r ($data);
+	
+	//$query = "INSERT INTO workers SET name='Джон', age=20, salary=700";
+	//$query = "INSERT INTO workers (name, age, salary) VALUES ('Джон', 20, 700)";
+	//$query = "INSERT INTO workers (name, age, salary)
+		//VALUES ('Катя', 20, 500), ('Юля', 25, 600), ('Женя', 30, 900)";
+		
+	
+	//$query = "INSERT INTO workers SET name='Никита', age=26, salary=300";
+	//$query = "UPDATE workers SET salary=900, name='Женя' WHERE name='Вася'";
+	//mysqli_query($link, $query) or die(mysqli_error($link));
+	
+	//$query = "SELECT*FROM workers WHERE id>0 ORDER BY age LIMIT 1,5";
+	//Выводим данные таблицы на экран
+	//Отправляем запрос
+	//$query = "SELECT*FROM pages WHERE article LIKE '%элемент%'";
+	$query = "SELECT*FROM workers WHERE name LIKE '%я'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	
+	for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row );
+	
+	print '<pre>';
+	print_r ($data); 
+	
+	//В $result будет лежать количество строк:
+	
+	/*
+	$query = "SELECT COUNT(*) as count FROM workers WHERE salary=300"; 
+	$result = mysqli_query($link, $query) or die( mysqli_error($link) );
+	$count = mysqli_fetch_array($result);
+	var_dump($count);
+	*/
+?>
+
+
+
+
+
