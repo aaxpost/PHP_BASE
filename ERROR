@@ -1,0 +1,13 @@
+#1
+http://old.code.mu/books/php/sql/nekotorye-prodvinutye-komandy-sql.html
+Ошибка в коде подраздела: Команда COUNT — считаем количество
+<?php
+//В $result будет лежать количество строк:
+	$query = "SELECT COUNT(*) as count FROM workers WHERE id>0"; 
+	$result = mysqli_query($link, $query) or die( mysqli_error($link) );
+	$count = mysqli_fetch_array($result); //$count = mysqli_fetch_[$result];
+
+	//В $count будет лежать массив 'count'=>кол-во:
+	var_dump($count);
+?>
+
