@@ -11,3 +11,45 @@ http://old.code.mu/books/php/sql/nekotorye-prodvinutye-komandy-sql.html
 	var_dump($count);
 ?>
 
+#2
+http://new.code.mu/ru/php/book/practice/2/
+В таблицах лишняя строка 'salary'
+Привильный код ниже, нужно исправить во всех таблицах
+<table>
+	<tr>
+		<th>id</th>
+		<th>name</th>
+		<th>age</th>
+		<th>salary</th>
+		<th>delete</th>
+	</tr>
+	<?php
+		// Удаление по id (до получения!):
+		if (isset($_GET['del'])) {
+			$del = $_GET['del'];
+			$query = "DELETE FROM workers WHERE id=$del";
+			mysqli_query($link, $query) or die(mysqli_error($link));
+		}
+	
+		// Получение всех работников:
+		$query = "SELECT * FROM workers";
+		$result = mysqli_query($link, $query) or die(mysqli_error($link));
+		for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+		
+		// Вывод на экран:
+		$result = '';
+		foreach ($data as $elem) {
+			$result .= '<tr>';
+			
+			$result .= '<td>' . $elem['id'] . '</td>';
+			$result .= '<td>' . $elem['name'] . '</td>';
+			$result .= '<td>' . $elem['age'] . '</td>';
+			$result .= '<td>' . $elem['salary'] . '</td>';
+			$result .= '<td><a href="?del=' . $elem['id'] . '">удалить</a></td>';
+			
+			$result .= '</tr>';
+		}
+		
+		echo $result;
+	?>
+</table>
