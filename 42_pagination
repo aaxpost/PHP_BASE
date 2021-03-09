@@ -1,0 +1,92 @@
+<style>
+	a {
+		text-decoration: none;
+		}
+	a.active{
+		text-decoration: underline;
+		}
+
+</style>
+<?php
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'on');
+	
+	$host = 'localhost';
+	$user = 'root';
+	$password = '';
+	$db_name = 'test';
+	$link = mysqli_connect($host, $user, $password, $db_name)
+		or die(mysqli_error($link));	
+	mysqli_query($link, "SET NAMES 'utf8'");
+	
+	//Если страница открыта первый раз, гет запроса нет, откроем первую страницу.
+	if (isset($_GET['page'])) {
+		$pages = $_GET['page'];
+		}
+		else {
+			$pages = 1;
+		}
+	
+	//Количество записей на странице
+	$notesOnPage = 2;
+	//Вычисляем id
+	$from = ($pages - 1)*$notesOnPage;
+	
+	$query = "SELECT*FROM users WHERE id>0 LIMIT $from,$notesOnPage";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	
+	for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row );
+	print '<pre>';
+	print_r ($data);
+	
+	//Получаем в переменную количество элементов в массиве
+	$query = "SELECT COUNT(*) as count FROM users";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	$count = mysqli_fetch_assoc($result)['count'];
+	$pagesCount = ceil($count / $notesOnPage);
+	
+	//Простой вариант вывода, код повторяется
+	/*
+	for ($i = 1; $i <= $pagesCount; $i++) {
+		if ($pages == $i) {
+			echo "<a href=\"?page=$i\" class = \"active\">$i</a> ";
+		}
+			else {
+			echo "<a href=\"?page=$i\">$i</a> ";
+		}
+	}
+	*/
+	
+	if ($pages != 1) {
+		$prev = $pages - 1;
+			echo "<a href=\"?page=$prev\"><<</a> ";
+		}
+		else {
+			echo "<< ";
+			}
+	
+	for ($i = 1; $i <= $pagesCount; $i++) {
+		if ($pages == $i) {
+			//Чтобы был красивый код добавляем пробел
+			$class = ' class = "active"';
+		}
+			else {
+			$class = '';
+		}
+		echo "<a href=\"?page=$i\"$class>$i</a> ";
+	}
+	
+	if ($pages != $pagesCount) {
+		$prev = $pages + 1;
+			echo "<a href=\"?page=$prev\">>></a> ";
+		}
+		else {
+			echo ">> ";
+			}
+	
+?>
+
+
+
+
+
