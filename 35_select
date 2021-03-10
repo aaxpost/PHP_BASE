@@ -1,0 +1,81 @@
+#35.1
+$query = "SELECT*FROM workers WHERE id=3";
+
+#35.2
+$query = "SELECT*FROM workers WHERE salary=1000";
+
+#35.3
+$query = "SELECT*FROM workers WHERE age=23";
+
+#35.4
+$query = "SELECT*FROM workers WHERE salary>400";
+
+#35.5
+$query = "SELECT*FROM workers WHERE salary>=500";
+
+#35.6
+$query = "SELECT*FROM workers WHERE salary<>500";
+
+#35.7
+$query = "SELECT*FROM workers WHERE salary<=900";
+
+#35.8
+$query = "SELECT salary, age FROM workers WHERE name='Вася'";
+
+#35.9
+$query = "SELECT*FROM workers WHERE age>25 AND age<=28";
+
+#35.10
+$query = "SELECT*FROM workers WHERE name='Петя'";
+
+#35.11
+$query = "SELECT*FROM workers WHERE name='Петя' OR name='Вася'";
+
+#35.12
+$query = "SELECT*FROM workers WHERE name!='Петя'";
+
+#35.13
+$query = "SELECT*FROM workers WHERE age=27 OR salary=1000";
+
+#35.14
+$query = "SELECT*FROM workers WHERE (age>=23 AND age<27) OR salary=1000";
+
+#35.15
+$query = "SELECT*FROM workers WHERE (age>23 AND age<27) OR (salary>400 AND salary<1000)";
+
+#35.16
+$query = "SELECT*FROM workers WHERE age=27 OR salary<>400";
+
+#35.17
+$query = "INSERT INTO workers SET name='Никита', age=26, salary=300";
+
+#35.18
+$query = "INSERT INTO workers (name, age, salary) VALUES ('Светлана', 0, 1200)";
+
+#35.19
+$query = "INSERT INTO workers (name, age, salary) 
+		VALUES ('Ярослав', 30, 1200), ('Петр', 31, 1000)";
+		
+#35.20
+$query = "DELETE FROM workers WHERE id=7";
+
+#35.21
+$query = "DELETE FROM workers WHERE name='Коля'";
+
+#35.22
+$query = "DELETE FROM workers WHERE age=23";
+
+#35.23
+$query = "UPDATE workers SET salary=200 WHERE name='Вася'";
+
+#35.24
+$query = "UPDATE workers SET age=35 WHERE id=4";
+
+#35.25
+$query = "UPDATE workers SET salary=700 WHERE salary=500";
+
+#35.26
+$query = "UPDATE workers SET age=23 WHERE id>2 AND id<=5";
+
+#35.27
+$query = "UPDATE workers SET salary=900, name='Женя' WHERE name='Вася'";
