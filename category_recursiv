@@ -1,0 +1,46 @@
+<?php
+
+	//Функция получения массива категорий из базы данных
+	function get_cat($link) {
+	 //запрос к базе данных
+	 $query = "SELECT * FROM category";
+	 $result = mysqli_query($link, $query) or die(mysqli_error($link));
+	 if(!$result) {
+	  return NULL;
+	 }
+	 $arr_cat = [];
+	 if(mysqli_num_rows($result) != 0) {
+	 
+			 //В цикле формируем массив
+			 for($i = 0; $i < mysqli_num_rows($result);$i++) {
+			 $row = mysqli_fetch_assoc($result);
+			 
+			 //Формируем массив, где ключами являются адишники на родительские категории
+				 if(empty($arr_cat[$row['parent_id']])) {
+				 $arr_cat[$row['parent_id']] = [];
+				 }
+				$arr_cat[$row['parent_id']][] = $row;
+			}
+				//возвращаем массив
+				return $arr_cat;
+		}
+	}
+
+	//Функция выводы каталога с помощью рекурсии https://webformyself.com/vyvod-mnogourovnevogo-menyu-s-neogranichennym-urovnem-vlozhennosti/
+	function view_cat($arr,$parent_id = 0) {
+	 
+	 //Условия выхода из рекурсии
+	 if(empty($arr[$parent_id])) {
+	  return;
+	 }
+	 echo '<ul>';
+	 //перебираем в цикле массив и выводим на экран
+	 for($i = 0; $i < count($arr[$parent_id]);$i++) {
+		  echo '<li><a href="?category_id='.$arr[$parent_id][$i]['id'].'&parent_id='.$parent_id.'">'.$arr[$parent_id][$i]['name'].'</a>';
+		  //рекурсия - проверяем нет ли дочерних категорий
+		  view_cat($arr,$arr[$parent_id][$i]['id']);
+		  echo '</li>';
+	 }
+	 echo '</ul>';
+	 
+	}
