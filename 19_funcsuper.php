@@ -158,14 +158,14 @@
 <?php
 	
 
-	$arr = [[[1, 2, 3, 4, 5, 99], [1, 2, 3, 4, 5, 99]], [[6, 7, 8]]];
+	$arr = [[1, 2, 3, 4, 5], [6, 7, 8]];
 	
 	echoArr($arr);
 
 	function echoArr($arr, $level = 0)
 	{ 
 		if($level < count($arr)) {
-			echo array_shift($arr[$level][$level]).'<br>';
+			echo array_shift($arr[$level]).'<br>';
 		
 			if(!empty($arr[$level])) {
 				echoArr($arr, $level);
